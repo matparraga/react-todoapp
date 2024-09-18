@@ -3,11 +3,13 @@ import { useState, useEffect } from "react";
 import TaskNavbar from "./components/TaskNavbar";
 import { TaskTable } from "./components/TaskTable";
 import TaskForm from "./components/taskForm";
+import TaskDeleteModal from "./components/taskDeleteModal";
 
 function App() {
   const [formOpen, setFormOpen] = useState(false);
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [taskToEdit, setTaskToEdit] = useState(null);
+  const [deleteTaskId, setDeleteTaskId] = useState("");
 
   const openForm = (id = null, name = "", description = "") => {
     if (id) {
@@ -22,12 +24,15 @@ function App() {
 
   const openDeleteModal = (id) => {
     setDeleteModalOpen(true);
+    setDeleteTaskId(id);
   };
 
   const closeForm = () => {
     setFormOpen(false);
     setTaskToEdit(null); // Restablece la tarea a editar al cerrar el formulario
   };
+
+  const closeDeleteModal = () => setDeleteModalOpen(false);
 
   const [tasks, setTasks] = useState([]);
 
@@ -95,6 +100,28 @@ function App() {
     }
   }
 
+  async function deleteTask(taskId) {
+    // Función para eliminar una tarea
+    try {
+      const response = await fetch(
+        `http://localhost:3000/api/tasks/${taskId}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(`Error al eliminar la tarea: ${response.statusText}`);
+      }
+      setTasks((tasks) => tasks.filter((task) => task._id !== taskId));
+    } catch (error) {
+      console.log(error);
+    }
+    closeForm();
+  }
+
   return (
     <TaskNavbar>
       <div className="general-container">
@@ -114,6 +141,13 @@ function App() {
             closeForm={closeForm}
             updateTask={updateTask}
             taskToEdit={taskToEdit} // Pasar la tarea a editar
+          />
+
+          <TaskDeleteModal
+            deleteModalOpen={deleteModalOpen}
+            closeDeleteModal={closeDeleteModal}
+            deleteTask={deleteTask}
+            deleteTaskId={deleteTaskId}
           />
         </div>
       </div>
