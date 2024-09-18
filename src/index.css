@@ -85,3 +85,52 @@ td {
   border: none;
   cursor: pointer;
 }
+
+.task-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 15px;
+  margin-top: 10px;
+  border-radius: 6px;
+  width: 500px;
+}
+
+.task-form-container,
+.task-delete-modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(30, 41, 59, 0.5);
+  width: 100vw;
+  height: 100vh;
+}
+.task-form-header,
+.task-delete-modal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.task-form-header label,
+.task-delete-modal-header label {
+  cursor: pointer;
+}
+.task-form input {
+  border: none;
+  margin: 10px 0;
+  background-color: #cbd5e1;
+  padding: 12px;
+  border-radius: 4px;
+}
+.task-form-btn {
+  border: none;
+  margin-top: 10px;
+  padding: 12px;
+  background-color: #0369a1;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
