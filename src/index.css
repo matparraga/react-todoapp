@@ -134,3 +134,22 @@ td {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.task-delete-modal {
+  background-color: white;
+  padding: 20px;
+  width: 400px;
+}
+.task-delete-modal p {
+  margin-bottom: 15px;
+}
+.task-delete-modal button {
+  background: none;
+  border: none;
+  padding: 10px;
+  background-color: #0369a1;
+  color: white;
+  margin-right: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
