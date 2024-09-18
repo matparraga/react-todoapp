@@ -45,3 +45,43 @@ body {
   font-size: 25px;
   cursor: pointer;
 }
+
+.table-container {
+  width: 550px;
+  margin: 2% auto 0;
+  /* background-color: #0f766e; */
+}
+
+.btn-newTask {
+  border: none;
+  background-color: #0369a1;
+  padding: 12px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.tasks-table {
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  border-collapse: collapse;
+}
+
+.tasks-table th,
+td {
+  padding: 15px;
+}
+.tasks-table thead {
+  background-color: #0369a1;
+  color: white;
+}
+
+.trash-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
